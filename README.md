@@ -16,7 +16,7 @@ The project utilizes the **Bank Marketing (Additional Full)** dataset available 
 * **Cardinality:** Except for `job`, `education`, and `month`, most columns have a low number of unique values. This simplifies the choice of encoding methods.
 * **Encoding strategies:** 
   * `month` and `day_of_week` can be encoded sequentially based on their calendar order.
-  * `education` can be ordinally encoded from 1 to 8 based on the academic level (from *unknown* to *university degree*).
+  * `education` can be ordinally encoded from 0 to 6 based on the academic level (from *unknown* to *university degree*).
 * **Feature impact:** Columns `housing`, `loan`, and `day_of_week` show no significant impact on the target variable.
 * **Handling imbalanced categories:** The `default` column contains only 3 "yes" values; these rows can either be dropped or merged into the *unknown* category.
 * **Key categorical features:** `poutcome`, `job`, `education`, `default`, `contact`, and `month` were identified as the most significant predictors.
