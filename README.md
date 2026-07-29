@@ -22,11 +22,11 @@ The project utilizes the **Bank Marketing (Additional Full)** dataset available 
 * **Key categorical features:** `poutcome`, `job`, `education`, `default`, `contact`, and `month` were identified as the most significant predictors.
 
 ### Numerical Variables
-* `pdays`: Replaced the value `999` (which indicates no previous contact) with `0`, and all other values with `-1` to represent binary communication status.
+* `pdays`: Replaced the value `999` (which indicates no previous contact) with `0`, and all other values with `- 1` to represent binary communication status.
 * `campaign`: Handled extreme outliers by replacing them with the median value.
 * `euribor3m`: Shows a wide data distribution, which was kept as-is for the initial iteration.
 * `nr.employed`: Contains the largest absolute values among all numerical features and requires scaling/normalization.
-* **Multicollinearity:** Strong correlations were detected between `euribor3m`, `emp.var.rate`, and `nr.employed`. For linear/regression models, only one of these features should be retained.
+* **Multicollinearity:** Strong correlations were detected between `euribor3m`, `emp.var.rate`, and `nr.employed`. For linear or regression models, only one of these features should be retained. However, since regression is only used as a baseline, I decided to keep all these variables because LightGBM and Random Forest are not sensitive to multicollinearity.
 
 ---
 
