@@ -44,28 +44,34 @@ To satisfy the requirements of different algorithms (especially Linear Regressio
 4. Trained baseline models, followed by Tree-based models and Gradient Boosting.
 
 ---
+## Methodology Notes
+- Data was split into Train (64%), Validation (16%), and Test (20%) sets with stratification on the target.
+- Decision threshold and model selection were tuned exclusively on the Validation set.
+- The Test set was used only once, for the final unbiased evaluation shown below.
 
+
+---
 ## Model Performance & Results
 
 After hyperparameter tuning and optimization, the models achieved the following results:
 
-| Model Name | Train F1 | Test F1 | Test Precision | Test Recall |
-| :--- | :--- | :--- | :--- | :--- |
-| **Randomized Search LGBM** | **0.522** | **0.530** | **0.475** | **0.599** |
-| Baseline LGBM | 0.563 | 0.530 | 0.476 | 0.597 |
-| RandomForest | 0.525 | 0.525 | 0.457 | 0.617 |
-| Hyperopt LGBM | 0.515 | 0.518 | 0.457 | 0.599 |
-| Logistic Regression | 0.434 | 0.457 | 0.352 | 0.650 |
-| KNN | 0.476 | 0.368 | 0.549 | 0.277 |
+| Model Name | Train F1 | Val F1 | Test F1 | Test Precision | Test Recall |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Randomized Search LGBM** | **0.521** | **0.511** | **0.525** | **0.468** | **0.599** |
+| Baseline LGBM | 0.569 | 0.505 | 0.520 | 0.464 | 0.593 |
+| RandomForest | 0.517 | 0.509 | 0.524 | 0.454 | 0.620 |
+| Hyperopt LGBM | 0.504 | 0.498 | 0.517 | 0.455 | 0.599 |
+| Logistic Regression | 0.432 | 0.431 | 0.451 | 0.346 | 0.645 |
+| KNN | 0.476 | 0.376 | 0.379 | 0.584 | 0.280 |
 
 ---
 
 ## Conclusion
 The **Randomized Search LightGBM (LGBM)** model emerged as the top performer.
 
-* **Highest Test F1 (0.5297):** Demonstrates the best overall balance between Precision and Recall with the fewest cumulative errors.
-* **Precision (~0.475):** For a bank, this implies that almost every second marketing call based on the model's prediction will be successful.
-* **Generalization:** The F1-score on the test set (0.530) is slightly higher than on the training set (0.522), indicating stable generalization without overfitting.
+* **Highest Test F1 (0.525):** Demonstrates the best overall balance between Precision and Recall with the fewest cumulative errors.
+* **Precision (~0.47):** For a bank, this implies that almost every second marketing call based on the model's prediction will be successful.
+* **Generalization:** Unlike Baseline LGBM - which shows a large gap between Train (0.569) and Val/Test (~0.51-0.52), a sign of overfitting - Randomized Search LGBM shows minimal variation across Train (0.521), Val (0.511), and Test (0.525) F1-scores, indicating stronger generalization rather than a lucky test-set result.
 
 ### Future Work
 To further improve model performance, future iterations will focus on advanced **Feature Engineering** to create new, high-quality domain-specific features.
