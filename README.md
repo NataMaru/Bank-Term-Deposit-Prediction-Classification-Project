@@ -10,15 +10,16 @@ The project utilizes the **Bank Marketing (Additional Full)** dataset available 
 ---
 ## Installation & How to Run
 1. Clone the repository:
-
+```bash
 git clone https://github.com/NataMaru/Bank-Term-Deposit-Prediction-Classification-Project.git
 cd Bank-Term-Deposit-Prediction-Classification-Project
-
+```
 2. Download the dataset from the Kaggle link above and place `bank-additional-full.csv` in the root of the repository (the notebook expects this exact filename, semicolon-separated).
 3. Install dependencies:
 
+```bash
 pip install -r requirements.txt
-
+```
 4. Run the notebook: `bank_term_deposit_classification.ipynb`
 ---
 
